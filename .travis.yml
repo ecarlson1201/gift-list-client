@@ -1,5 +1,12 @@
- language: node_js
- node_js: node
- cache:
-   directories:
-     - node_modules
+language: node_js
+node_js: node
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: LmKW4PKg4xJVLErYMAlWLSq5OImdZw5GkvPt8LD/fAZshIDzSzVTo14/J6ldGezZKvfvoWfdko/NtaVAZA4BrPfhfoIi41ajj27ti7KXd0RTKnfj5hR2k7E/M9V9DJBNwrAt6N4yCdFGaW4AA+fmLcVmmCwHxUBzOr9dLJaCCK+F8hDua6cN++Txj5P2RggE9CorKcG0MKUBch5hPAYg33e4tp2OBs63VNdfdcDLD9W+RPDBNGBNx4KUo/3rFEnydeaX2ZircdjM5CfikSQ5of1Ntw1h5xWRmXh/5gn+u/Gz/OX2UJFWvqD/KSs51hmw3WAh0JzYDqplg/xOwGkLdmXZLwWlSLZur5f4C7Jc5bJpvvpLkB2Jx5hltnaBF1pRolEsMqLabISwRypwp0nYi4/+ZEl9dnfxpQsRygXXhOQsBpQZpzlxE7Rhx9qAMun3TKRG6+Vnv8YiIoc+fpC4eYjbCA3HyxCcEth4p/ccBkjpW+56aRDf4nE/ijX2z6dQDvLYy9jDYFAQjkyqx01hMeKqZDvNRyqNiC4kXyt6AP0c2TPNG0ch+ecR7xoSJlwzx51S67fNJcvpUXWfRObHb2VsGvvAEPgV4x9/UPf0hi7AhK3AYIVx86t5KKTmvXmW2JMortYH+71sa6WkyYGEj5s70aeKae2zX3WBpMwhGdI=
+  app: gift-list-client
+  on:
+    repo: ecarlson1201/gift-list-client
