@@ -1,16 +1,24 @@
 import React from 'react';
-import { GiftSaveForm } from './gift-save-form';
+import { connect } from 'react-redux';
 
-export default function GiftInfo(props) {
+import GiftSaveForm from './gift-save-form';
+
+export function GiftInfo(props) {
     return <section>
-        <h2>Gift Name: </h2>
-        <h3>Price Range: </h3>
-        <h3>Suggested Holiday: </h3>
-        <h3>Suggested Recipient: </h3>
+        <h2>Gift Name: {props.clicked.name}</h2>
+        <h3>Price Range: {props.clicked.name}</h3>
+        <h3>Suggested Holiday: {props.clicked.name}</h3>
+        <h3>Suggested Recipient: {props.clicked.name}</h3>
         <h3>Description:</h3>
-        <p>
+        <p>{props.clicked.name}
         </p><br />
-        <h3>Suggested Link: </h3>
-        <GiftSaveForm />
+        <h3>Suggested Link: {props.clicked.name}</h3>
+        <GiftSaveForm/>
     </section>
 }
+
+const mapPropsToState = state => ({
+    clicked: state.clicked
+});
+
+export default connect(mapPropsToState)(GiftInfo);

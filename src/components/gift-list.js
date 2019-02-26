@@ -2,22 +2,31 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import GiftPreview from './gift-preview';
+import { deleteGift } from '../actions'
 
-export function GiftList(props) {
-    const gifts = props.gifts.map((gift, index) => (
-        <li key={index}>
-            <GiftPreview {...gift} />
-        </li>
-    ));
+export class GiftList extends React.Component {
+    deleteGift(event) {
+        this.props.dispatch(deleteGift(this.props.title, parseInt(event.currentTarget.getAttribute('data-id'))));
+        console.log(this.props.gifts)
+    };
 
-    return (
-        <div>
-            <h3>{props.title}</h3>
-            <ul>
-                {gifts}
-            </ul>
-        </div>
-    )
+    render() {
+        const gifts = this.props.gifts.map((gift, index) => (
+            <li key={index}>
+                <GiftPreview {...gift} />
+                <button data-id={index} onClick={event => this.deleteGift(event)}>Delete</button>
+            </li>
+        ));
+
+        return (
+            <div>
+                <h3>{this.props.title}</h3>
+                <ul>
+                    {gifts}
+                </ul>
+            </div>
+        );
+    };
 };
 
 export default connect()(GiftList);

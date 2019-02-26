@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { GiftList } from './gift-list';
+import GiftList from './gift-list';
 import AddGiftListForm from './add-gift-list-form';
 import { addGiftList, deleteGiftList } from '../actions'
 
@@ -10,16 +10,15 @@ export class GiftListBoard extends React.Component {
         this.props.dispatch(addGiftList(title))
     };
     
-    deleteGiftList(index){
-        this.props.dispatch(deleteGiftList(index))
+    deleteGiftList(event){
+        this.props.dispatch(deleteGiftList(parseInt(event.currentTarget.getAttribute('data-id'))));
     };
     
     render() {
-
         const lists = this.props.lists.map((list, index) => (
             <li key={index}>
-                <GiftList index={index} {...list} />
-                <button onClick={index => this.deleteGiftList(index)}>Delete List</button>
+                <GiftList index={index} {...list}/>
+                <button data-id={index} onClick={event => this.deleteGiftList(event)}>Delete List</button>
             </li>
         ));
 

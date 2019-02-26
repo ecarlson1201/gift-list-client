@@ -1,10 +1,21 @@
 import {
     ADD_GIFT_LIST,
     SAVE_GIFT,
-    DELETE_GIFT_LIST
+    DELETE_GIFT_LIST,
+    DELETE_GIFT,
+    CLICK_GIFT
 } from '../actions/index'
 
 const initialState = {
+    "clicked": {
+        "name": null,
+        "price": null,
+        "holiday": null,
+        "recipient": null,
+        "description": null,
+        "link": null,
+        "options": []
+    },
     "user": "userId",
     "lists": [
         {
@@ -82,24 +93,56 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
+    function arrayRemove(arr, value) {
+        return arr.filter(function (ele, index) {
+            return index !== value;
+        });
+    };
+
     switch (action.type) {
+
         case ADD_GIFT_LIST:
             return Object.assign({}, state, {
                 lists: [...state.lists, {
                     title: action.title,
                     gifts: []
                 }]
-            })
+            });
 
         case DELETE_GIFT_LIST:
-        function arrayRemove(arr, value) {
-            return arr.filter(function(ele, index){
-                return index !== value;
-            });
-         };
             return Object.assign({}, state, {
                 lists: arrayRemove(state.lists, action.index)
             });
+
+        case DELETE_GIFT:
+            let listsAfterDelete = state.lists.reduce((acc, val, index) => {
+                if (state.lists[index].title === action.title) {
+                    acc[index].gifts.splice(action.gift, 1)
+                };
+                return acc
+            }, state.lists)
+            return Object.assign({}, state, {
+                lists: listsAfterDelete
+            });
+
+        case SAVE_GIFT:
+            let newLists = state.lists.reduce((acc, val, index) => {
+                if (state.lists[index].title === action.title) {
+                    return [...state.lists[index].gifts,
+                    action.gift
+                    ];
+                };
+                return acc;
+            }, state.lists);
+            return Object.assign({}, state, {
+                lists: newLists
+            });
+
+        case CLICK_GIFT:
+            return Object.assign({}, state, {
+
+            });
+
         default:
             return state;
     };
