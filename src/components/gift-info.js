@@ -5,7 +5,8 @@ import GiftSaveForm from './gift-save-form';
 
 export function GiftInfo(props) {
     return <section>
-        <h2>Gift Name: </h2><span>{props.clicked.name}</span> 
+        <img src={props.clicked.image} alt="gift"/>
+        <h3>Gift Name: </h3><span>{props.clicked.name}</span> 
         <h3>Price Range: </h3><span>{props.clicked.price}</span>
         <h3>Suggested Holiday: </h3><span>{props.clicked.holiday}</span>
         <h3>Suggested Recipient: </h3><span>{props.clicked.recipient}</span>

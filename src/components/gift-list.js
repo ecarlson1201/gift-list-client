@@ -20,7 +20,6 @@ export class GiftList extends React.Component {
 
         return (
             <div>
-                <h3>{this.props.title}</h3>
                 <ul>
                     {gifts}
                 </ul>
