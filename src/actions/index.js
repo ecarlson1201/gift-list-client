@@ -25,6 +25,8 @@ export const deleteGift = (title, gift) => ({
 });
 
 export const CLICK_GIFT = "CLICK_GIFT";
-export const clickGift = () => ({
-    type: CLICK_GIFT
+export const clickGift = (object, array) => ({
+    type: CLICK_GIFT,
+    object,
+    array
 });

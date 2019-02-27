@@ -4,14 +4,13 @@ import { connect } from 'react-redux';
 import { clickGift } from '../actions';
 
 export class GiftPreview extends React.Component {
-    handleClick(data) {
-        this.props.dispatch(clickGift(data))
-        console.log(this.props)
-        console.log(this.props.lists.reduce((acc, val, index) => {
+    handleClick(clickedObject) {
+        const optionsArray =this.props.lists.reduce((acc, val, index) => {
             acc.push(this.props.lists[index].title)
             return acc
-        }, []))
-    }
+        }, []);
+        this.props.dispatch(clickGift(clickedObject, optionsArray))
+    };
 
     render() {
         return <div onClick={() => this.handleClick(this.props)}>
@@ -22,4 +21,9 @@ export class GiftPreview extends React.Component {
     };
 };
 
-export default connect()(GiftPreview);
+const mapStateToProps = state => ({
+    clicked: state.clicked,
+    lists: state.lists
+});
+
+export default connect(mapStateToProps)(GiftPreview);

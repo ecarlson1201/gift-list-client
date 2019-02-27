@@ -3,7 +3,7 @@ import {
     SAVE_GIFT,
     DELETE_GIFT_LIST,
     DELETE_GIFT,
-    CLICK_GIFT
+    CLICK_GIFT,
 } from '../actions/index'
 
 const initialState = {
@@ -35,7 +35,7 @@ const initialState = {
             "title": "Chantal",
             "gifts": [
                 {
-                    "name": "Sky jacket",
+                    "name": "Ski jacket",
                     "price": "$100 - $250",
                     "holiday": "birthday",
                     "recipient": "girlfriend/wife",
@@ -114,6 +114,19 @@ export default (state = initialState, action) => {
                 lists: arrayRemove(state.lists, action.index)
             });
 
+        case CLICK_GIFT:
+            return Object.assign({}, state, {
+                clicked: {
+                    name: action.object.name,
+                    price: action.object.price,
+                    holiday: action.object.holiday,
+                    recipient: action.object.recipient,
+                    description: action.object.description,
+                    link: action.object.link,
+                    options: action.array
+                }
+            });
+
         case DELETE_GIFT:
             let listsAfterDelete = state.lists.reduce((acc, val, index) => {
                 if (state.lists[index].title === action.title) {
@@ -126,21 +139,14 @@ export default (state = initialState, action) => {
             });
 
         case SAVE_GIFT:
-            let newLists = state.lists.reduce((acc, val, index) => {
+            let listsAfterSave = state.lists.reduce((acc, val, index) => {
                 if (state.lists[index].title === action.title) {
-                    return [...state.lists[index].gifts,
-                    action.gift
-                    ];
+                    acc[index].gifts.push(action.gift)
                 };
                 return acc;
             }, state.lists);
             return Object.assign({}, state, {
-                lists: newLists
-            });
-
-        case CLICK_GIFT:
-            return Object.assign({}, state, {
-
+                lists: listsAfterSave
             });
 
         default:

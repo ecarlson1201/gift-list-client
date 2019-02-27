@@ -5,14 +5,15 @@ import GiftSaveForm from './gift-save-form';
 
 export function GiftInfo(props) {
     return <section>
-        <h2>Gift Name: {props.clicked.name}</h2>
-        <h3>Price Range: {props.clicked.name}</h3>
-        <h3>Suggested Holiday: {props.clicked.name}</h3>
-        <h3>Suggested Recipient: {props.clicked.name}</h3>
+        <h2>Gift Name: </h2><span>{props.clicked.name}</span> 
+        <h3>Price Range: </h3><span>{props.clicked.price}</span>
+        <h3>Suggested Holiday: </h3><span>{props.clicked.holiday}</span>
+        <h3>Suggested Recipient: </h3><span>{props.clicked.recipient}</span>
         <h3>Description:</h3>
-        <p>{props.clicked.name}
-        </p><br />
-        <h3>Suggested Link: {props.clicked.name}</h3>
+        <p>{props.clicked.description}
+        </p>
+        <h3>Suggested Link:</h3>
+        <a href={props.clicked.link} rel='noopener noreferrer' target='_blank' >{props.clicked.link}</a>
         <GiftSaveForm/>
     </section>
 }
