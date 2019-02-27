@@ -29,7 +29,7 @@ const initialState = {
                     "recipient": "father/mother",
                     "description": "I was searching for ideas for my boyfriend who loves baseball...",
                     "link": "https://fcgoods.com",
-                    "image":"https://cdn.shopify.com/s/files/1/0043/9252/products/the-bifold-wallet-tan-2.jpg?v=1488056566"
+                    "image": "https://cdn.shopify.com/s/files/1/0043/9252/products/the-bifold-wallet-tan-2.jpg?v=1488056566"
                 }
             ]
         },
@@ -182,6 +182,15 @@ export default (state = initialState, action) => {
         });
     };
 
+    let listIndex;
+    const listCheck = function () {
+        return state.lists.forEach((val, index) => {
+            if (state.lists[index].title === action.title) {
+                listIndex = index;
+            };
+        });
+    }
+
     switch (action.type) {
 
         case ADD_GIFT_LIST:
@@ -212,25 +221,29 @@ export default (state = initialState, action) => {
             });
 
         case DELETE_GIFT:
-            let listsAfterDelete = state.lists.reduce((acc, val, index) => {
-                if (state.lists[index].title === action.title) {
-                    acc[index].gifts.splice(action.gift, 1)
-                };
-                return acc
-            }, state.lists)
+            listCheck();
             return Object.assign({}, state, {
-                lists: listsAfterDelete
+                lists: [
+                    ...state.lists.slice(0, listIndex),
+                    {
+                        ...state.lists[listIndex],
+                        gifts: arrayRemove([...state.lists[listIndex].gifts], action.gift),
+                    },
+                    ...state.lists.slice(listIndex + 1)
+                ]
             });
 
         case SAVE_GIFT:
-            let listsAfterSave = state.lists.reduce((acc, val, index) => {
-                if (state.lists[index].title === action.title) {
-                    acc[index].gifts.push(action.gift)
-                };
-                return acc;
-            }, state.lists);
+            listCheck();
             return Object.assign({}, state, {
-                lists: listsAfterSave
+                lists: [
+                    ...state.lists.slice(0, listIndex),
+                    {
+                        ...state.lists[listIndex],
+                        gifts: [...state.lists[listIndex].gifts, action.gift]
+                    },
+                    ...state.lists.slice(listIndex + 1)
+                ]
             });
 
         default:
