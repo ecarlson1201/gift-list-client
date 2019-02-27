@@ -7,7 +7,6 @@ import { deleteGift } from '../actions'
 export class GiftList extends React.Component {
     deleteGift(event) {
         this.props.dispatch(deleteGift(this.props.title, parseInt(event.currentTarget.getAttribute('data-id'))));
-      //  console.log(this.props.gifts)
     };
 
     render() {

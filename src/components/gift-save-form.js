@@ -13,7 +13,6 @@ export class GiftSaveForm extends React.Component {
         const savedGift = { ...this.props.clicked }
         delete savedGift.options
         this.props.dispatch(saveGift(event.currentTarget.listOptions.value, savedGift))
-        console.log(this.props.lists)
     };
 
     render() {
