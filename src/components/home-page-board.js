@@ -8,7 +8,7 @@ export class HomePageBoard extends React.Component {
         const lists = this.props.carouselData.map((list, index) => (
             <li key={index}>
                 <h3>Browse {this.props.carouselData[index].title} Gifts</h3>
-                <GiftList index={index} {...list}/>
+                <GiftList index={index} {...list} buttons={false}/>
             </li>
         ));
         return <div>

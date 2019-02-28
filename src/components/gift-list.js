@@ -13,7 +13,7 @@ export class GiftList extends React.Component {
         const gifts = this.props.gifts.map((gift, index) => (
             <li key={index}>
                 <GiftPreview {...gift} />
-                <button data-id={index} onClick={event => this.deleteGift(event)}>Delete</button>
+                {this.props.buttons ? <button data-id={index} onClick={event => this.deleteGift(event)}>Delete</button>: ''}
             </li>
         ));
 
