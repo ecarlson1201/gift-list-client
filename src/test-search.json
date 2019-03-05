@@ -1,4 +1,4 @@
-export const testSearch = {
+{
     "data": [
         {
             "name": "Harry Potter Wand",
