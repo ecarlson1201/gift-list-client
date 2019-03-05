@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { saveGift } from '../actions';
+import { saveGift } from '../actions/protected-data';
 
 export class GiftSaveForm extends React.Component {
     constructor(props) {
@@ -30,8 +30,8 @@ export class GiftSaveForm extends React.Component {
 };
 
 const mapStateToProps = state => ({
-    clicked: state.clicked,
-    lists: state.lists
+    clicked: state.protectedData.clicked,
+    lists: state.protectedData.lists
 });
 
 export default connect(mapStateToProps)(GiftSaveForm);

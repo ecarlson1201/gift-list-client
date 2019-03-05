@@ -10,16 +10,14 @@ import SearchResultsBoard from './components/search-results-board';
 import PostGift from './components/post-gift';
 import GiftInfo from './components/gift-info';
 import LandingPage from './components/landing-page';
-import SignupPage from './components/signup-page';
-import LoginPage from './components/login-page';
+import RegistrationPage from './components/registration-page';
 
 export default function App(props) {
   return (
     <div className="App">
       <NavBar />
       <LandingPage />
-      <SignupPage />
-      <LoginPage />
+      <RegistrationPage />
       <HomePageBoard />
       <GiftListBoard />
       <SearchResultsBoard />

@@ -4,7 +4,7 @@ import {
     DELETE_GIFT_LIST,
     DELETE_GIFT,
     CLICK_GIFT
-} from '../actions/index'
+} from '../actions/protected-data'
 
 const initialState = {
     "clicked": {
@@ -175,7 +175,7 @@ const initialState = {
     ]
 };
 
-export default (state = initialState, action) => {
+export default function reducer(state = initialState, action) {
     function arrayRemove(arr, value) {
         return arr.filter(function (ele, index) {
             return index !== value;

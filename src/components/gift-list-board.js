@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import GiftList from './gift-list';
 import AddGiftListForm from './add-gift-list-form';
-import { addGiftList, deleteGiftList } from '../actions'
+import { addGiftList, deleteGiftList } from '../actions/protected-data'
 
 export class GiftListBoard extends React.Component {
     addGiftList(title) {
@@ -37,7 +37,7 @@ export class GiftListBoard extends React.Component {
 };
 
 const mapStateToProps = state => ({
-    lists: state.lists
+    lists: state.protectedData.lists
 });
 
 export default connect(mapStateToProps)(GiftListBoard);

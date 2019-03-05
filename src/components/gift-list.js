@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import GiftPreview from './gift-preview';
-import { deleteGift } from '../actions'
+import { deleteGift } from '../actions/protected-data'
 
 export class GiftList extends React.Component {
     deleteGift(event) {

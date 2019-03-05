@@ -20,7 +20,7 @@ export function GiftInfo(props) {
 }
 
 const mapPropsToState = state => ({
-    clicked: state.clicked
+    clicked: state.protectedData.clicked
 });
 
 export default connect(mapPropsToState)(GiftInfo);

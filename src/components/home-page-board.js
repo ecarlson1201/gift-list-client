@@ -21,7 +21,7 @@ export class HomePageBoard extends React.Component {
 };
 
 const mapStateToProps = state => ({
-    carouselData: state.carouselData
+    carouselData: state.protectedData.carouselData
 });
 
 export default connect(mapStateToProps)(HomePageBoard);
