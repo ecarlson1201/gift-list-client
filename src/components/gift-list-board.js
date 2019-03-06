@@ -28,7 +28,7 @@ export class GiftListBoard extends React.Component {
             return <Redirect to="/" />
         };
         const lists = this.props.lists.map((list, index) => (
-            <li key={this.props.lists[index]._id}>
+            <li key={index}>
                 <h3>{this.props.lists[index].title}'s List</h3>
                 <GiftList index={index} buttons={true} {...list} />
                 <button data-id={this.props.lists[index]._id} onClick={event => this.deleteGiftList(event)}>Delete List</button>

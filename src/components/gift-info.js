@@ -5,7 +5,6 @@ import GiftSaveForm from './gift-save-form';
 import NavBar from './nav-bar';
 
 export function GiftInfo(props) {
-    console.log(props.clicked)
     return <section>
         <NavBar />
         <img src={props.clicked.image} alt="gift" />

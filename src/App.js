@@ -51,7 +51,7 @@ export class App extends React.Component {
         <Route exact path="/lists" component={GiftListBoard} />
         <Route exact path="/search" component={SearchResultsBoard} />
         <Route exact path="/postgift" component={PostGift} />
-        <Route exact path="/giftinfo" component={GiftInfo} />
+        <Route exact path="/giftinfo/:id" component={GiftInfo} />
 
         {/*<NavBar />
         <LandingPage />
