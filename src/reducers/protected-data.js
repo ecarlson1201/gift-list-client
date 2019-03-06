@@ -1,7 +1,5 @@
 import {
-    ADD_GIFT_LIST,
     SAVE_GIFT,
-    DELETE_GIFT_LIST,
     DELETE_GIFT,
     FETCH_PROTECTED_DATA_SUCCESS,
     FETCH_PROTECTED_DATA_ERROR
@@ -111,7 +109,6 @@ export default function reducer(state = initialState, action) {
 
     switch (action.type) {
         case FETCH_PROTECTED_DATA_SUCCESS:
-        console.log(action)
             return Object.assign({}, state, {
                 data: action.data,
                 error: null
@@ -120,18 +117,6 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, {
                 error: action.error
             })
-        case ADD_GIFT_LIST:
-            return Object.assign({}, state, {
-                lists: [...state.data.lists, {
-                    title: action.title,
-                    gifts: []
-                }]
-            });
-
-        case DELETE_GIFT_LIST:
-            return Object.assign({}, state, {
-                lists: arrayRemove(state.data.lists, action.index)
-            });
 
         case DELETE_GIFT:
             listCheck();

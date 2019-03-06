@@ -1,28 +1,34 @@
 import React from 'react';
+import { Field, reduxForm, focus } from 'redux-form';
+import Input from './input';
+import { addGiftList } from '../actions/protected-data';
 
-export default class AddGiftListForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.onSubmit = this.onSubmit.bind(this);
+export class AddGiftListForm extends React.Component {
+    onSubmit(values) {
+        return this.props.dispatch(addGiftList(values)).then(() => { this.props.reset() })
     }
-
-    onSubmit(event) {
-        event.preventDefault();
-        const text = this.textInput.value.trim();
-        if (text && this.props.onAdd) {
-            this.props.onAdd(text);
-        }
-        this.textInput.value = '';
-    };
 
     render() {
         return (
-            <form onSubmit={this.onSubmit}>
+            <form onSubmit={this.props.handleSubmit(values =>
+                this.onSubmit(values))}>
                 <h3>New List: </h3>
-                <input type="text" placeholder="Name" required ref={input => this.textInput = input}/> <br />
+                <Field
+                    type="text"
+                    component={Input}
+                    name="title"
+                    id="title"
+                    placeholder="Name"
+                    required
+                ></Field>
                 <input type="submit" value="Add List" />
             </form>
         );
     };
 };
 
+
+export default reduxForm({
+    form: 'login',
+    onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
+})(AddGiftListForm);

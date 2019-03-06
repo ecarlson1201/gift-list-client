@@ -19,7 +19,8 @@ export class GiftListBoard extends React.Component {
     };
 
     deleteGiftList(event) {
-        this.props.dispatch(deleteGiftList(parseInt(event.currentTarget.getAttribute('data-id'))));
+        return this.props.dispatch(deleteGiftList(event.currentTarget.getAttribute('data-id')))
+            .then(() => { this.props.dispatch(fetchProtectedData()) });
     };
 
     render() {
@@ -27,10 +28,10 @@ export class GiftListBoard extends React.Component {
             return <Redirect to="/" />
         };
         const lists = this.props.lists.map((list, index) => (
-            <li key={index}>
+            <li key={this.props.lists[index]._id}>
                 <h3>{this.props.lists[index].title}'s List</h3>
                 <GiftList index={index} buttons={true} {...list} />
-                <button data-id={index} onClick={event => this.deleteGiftList(event)}>Delete List</button>
+                <button data-id={this.props.lists[index]._id} onClick={event => this.deleteGiftList(event)}>Delete List</button>
             </li>
         ));
 
