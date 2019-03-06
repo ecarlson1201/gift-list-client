@@ -20,25 +20,25 @@ export default function reducer(state = initialState, action) {
                 authToken: action.authToken
             });
         case CLEAR_AUTH:
-        return Object.assign({}, state, {
-            authToken: null,
-            currentUser: null
-        });
+            return Object.assign({}, state, {
+                authToken: null,
+                currentUser: null
+            });
         case AUTH_REQUEST:
-        return Object.assign({}, state, {
-            loading: true,
-            error: null
-        });
+            return Object.assign({}, state, {
+                loading: true,
+                error: null
+            });
         case AUTH_SUCCESS:
-        return Object.assign({}, state, {
-            rloading: false,
-            currentUser: action.currentUser
-        });
+            return Object.assign({}, state, {
+                loading: false,
+                currentUser: action.currentUser
+            });
         case AUTH_ERROR:
-        return Object.assign({}, state, {
-            loading: false,
-            error: action.error
-        });
+            return Object.assign({}, state, {
+                loading: false,
+                error: action.error
+            });
         default:
             return state
     };

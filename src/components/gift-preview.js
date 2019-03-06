@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import './gift-preview.css'
 
-import { clickGift } from '../actions/protected-data';
+import { clickGift } from '../actions/click-gift';
 
 export class GiftPreview extends React.Component {
     handleClick(clickedObject) {
@@ -13,7 +13,7 @@ export class GiftPreview extends React.Component {
         }, []);
         this.props.dispatch(clickGift(clickedObject, optionsArray))
     };
-
+    
     render() {
         return <div onClick={() => this.handleClick(this.props)}>
             <img src={this.props.image} alt="gift-preview"/> <br/>
@@ -25,8 +25,7 @@ export class GiftPreview extends React.Component {
 };
 
 const mapStateToProps = state => ({
-    clicked: state.protectedData.clicked,
-    lists: state.protectedData.lists
+    lists: state.protectedData.data.lists
 });
 
 export default connect(mapStateToProps)(GiftPreview);

@@ -1,3 +1,34 @@
+import { API_BASE_URL } from '../config';
+import { normalizeResponseErrors } from './utils';
+
+export const FETCH_PROTECTED_DATA_SUCCESS = 'FETCH_PROTECTED_DATA_SUCCESS';
+export const fetchProtectedDataSuccess = data => ({
+    type: FETCH_PROTECTED_DATA_SUCCESS,
+    data
+});
+
+export const FETCH_PROTECTED_DATA_ERROR = 'FETCH_PROTECTED_DATA_ERROR';
+export const fecthProtectedDataError = error => ({
+    type: FETCH_PROTECTED_DATA_ERROR,
+    error
+});
+
+export const fetchProtectedData = () => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/accounts/lists/protected`, {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${authToken}`
+        }
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .then(( data ) => dispatch(fetchProtectedDataSuccess(data)))
+        .catch(err => {
+            dispatch(fecthProtectedDataError(err));
+        });
+};
+
 export const ADD_GIFT_LIST = 'ADD_GIFT_LIST';
 export const addGiftList = title => ({
     type: ADD_GIFT_LIST,
@@ -22,11 +53,4 @@ export const deleteGift = (title, gift) => ({
     type: DELETE_GIFT,
     title,
     gift
-});
-
-export const CLICK_GIFT = "CLICK_GIFT";
-export const clickGift = (object, array) => ({
-    type: CLICK_GIFT,
-    object,
-    array
 });

@@ -30,8 +30,8 @@ export class GiftSaveForm extends React.Component {
 };
 
 const mapStateToProps = state => ({
-    clicked: state.protectedData.clicked,
-    lists: state.protectedData.lists
+    clicked: state.clickGift,
+    lists: state.protectedData.data.lists
 });
 
 export default connect(mapStateToProps)(GiftSaveForm);

@@ -6,7 +6,7 @@ import LoginForm from './login-form';
 
 export function LandingPage(props) {
     if (props.loggedIn) {
-        return <Redirect to="/homepage" />;
+        return <Redirect to="/homepage" />
     };
 
     return (
@@ -16,6 +16,7 @@ export function LandingPage(props) {
                 gift ideas submitted by other users. <br /> Users can save ideas to lists for different
                 people in their lives. </h3>
             <LoginForm />
+            <Link to="/register">Create an Account</Link>
         </div>
     );
 };
