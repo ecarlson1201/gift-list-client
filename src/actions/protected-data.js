@@ -100,16 +100,50 @@ export const deleteGiftList = id => (dispatch, getState) => {
         });
 };
 
-export const SAVE_GIFT = 'SAVE_GIFT';
-export const saveGift = (title, gift) => ({
-    type: SAVE_GIFT,
-    title,
-    gift
-});
+export const saveGift = (gift, list) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/accounts/giftsave/protected`, {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+        },
+        body: JSON.stringify({gift: gift, list: list})
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .catch(err => {
+            const { reason, message, location } = err;
+            if (reason === "ValidationError") {
+                return Promise.reject(
+                    new SubmissionError({
+                        [location]: message
+                    })
+                );
+            };
+        });
+};
 
-export const DELETE_GIFT = "DELETE_GIFT";
-export const deleteGift = (title, gift) => ({
-    type: DELETE_GIFT,
-    title,
-    gift
-});
+export const deleteGift = (gift, list) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/accounts/gifts/protected`, {
+        method: 'DELETE',
+        headers: {
+            'content-type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+        },
+        body: JSON.stringify({gift: gift, list: list})
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .catch(err => {
+            const { reason, message, location } = err;
+            if (reason === "ValidationError") {
+                return Promise.reject(
+                    new SubmissionError({
+                        [location]: message
+                    })
+                );
+            };
+        });
+};

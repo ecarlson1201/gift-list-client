@@ -2,18 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import GiftPreview from './gift-preview';
-import { deleteGift } from '../actions/protected-data'
+import { deleteGift, fetchProtectedData } from '../actions/protected-data'
 
 export class GiftList extends React.Component {
     deleteGift(event) {
-        this.props.dispatch(deleteGift(this.props.title, parseInt(event.currentTarget.getAttribute('data-id'))));
+        let giftId = event.currentTarget.getAttribute('data-id')
+        let listId = this.props.list
+        return this.props.dispatch(deleteGift(giftId, listId))
+        .then(() => { this.props.dispatch(fetchProtectedData()) });
     };
 
     render() {
         const gifts = this.props.gifts.map((gift, index) => (
             <li key={index}>
                 <GiftPreview {...gift} />
-                {this.props.buttons ? <button data-id={index} onClick={event => this.deleteGift(event)}>Delete</button>: ''}
+                {this.props.buttons ? <button data-id={this.props.gifts[index]._id} onClick={event => this.deleteGift(event)}>Delete</button> : ''}
             </li>
         ));
 

@@ -1,6 +1,4 @@
 import {
-    SAVE_GIFT,
-    DELETE_GIFT,
     FETCH_PROTECTED_DATA_SUCCESS,
     FETCH_PROTECTED_DATA_ERROR
 } from '../actions/protected-data'
@@ -92,20 +90,6 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-    function arrayRemove(arr, value) {
-        return arr.filter(function (ele, index) {
-            return index !== value;
-        });
-    };
-
-    let listIndex;
-    const listCheck = function () {
-        return state.lists.forEach((val, index) => {
-            if (state.lists[index].title === action.title) {
-                listIndex = index;
-            };
-        });
-    };
 
     switch (action.type) {
         case FETCH_PROTECTED_DATA_SUCCESS:
@@ -117,32 +101,6 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, {
                 error: action.error
             })
-
-        case DELETE_GIFT:
-            listCheck();
-            return Object.assign({}, state, {
-                lists: [
-                    ...state.data.lists.slice(0, listIndex),
-                    {
-                        ...state.lists[listIndex],
-                        gifts: arrayRemove([...state.data.lists[listIndex].gifts], action.gift),
-                    },
-                    ...state.data.lists.slice(listIndex + 1)
-                ]
-            });
-
-        case SAVE_GIFT:
-            listCheck();
-            return Object.assign({}, state, {
-                lists: [
-                    ...state.data.lists.slice(0, listIndex),
-                    {
-                        ...state.data.lists[listIndex],
-                        gifts: [...state.data.lists[listIndex].gifts, action.gift]
-                    },
-                    ...state.data.lists.slice(listIndex + 1)
-                ]
-            });
 
         default:
             return state;

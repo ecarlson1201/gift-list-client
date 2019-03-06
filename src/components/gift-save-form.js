@@ -1,37 +1,32 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { Field, reduxForm, focus } from 'redux-form';
 
 import { saveGift } from '../actions/protected-data';
 
 export class GiftSaveForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.onSubmit = this.onSubmit.bind(this);
-    }
-    onSubmit(event) {
-        event.preventDefault();
-        const savedGift = { ...this.props.clicked }
-        delete savedGift.options
-        this.props.dispatch(saveGift(event.currentTarget.listOptions.value, savedGift))
+    onSubmit(values) {
+        return this.props.dispatch(saveGift(this.props.giftId, values.list))
+            .then(res => this.props.history.push('/lists'))  
     };
 
     render() {
-        const options = this.props.clicked.options.map((option, index) => (
-            <option key={index}>{option}</option>
+        const options = this.props.lists.map((option, index) => (
+            <option key={index} value={this.props.lists[index]._id}>{this.props.lists[index].title}</option>
         ));
 
-        return <form action="save" onSubmit={this.onSubmit}>
-            <select name="listOptions">
-                {options}
-            </select>
-            <input type="submit" value="Save to List" />
-        </form>;
+        return (
+            <form action="saveGift" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+                <Field name="list" component="select">
+                    <option key='blank' value='' />
+                    {options}
+                </Field>
+                <input type="submit" value="Save to List" />
+            </form>
+        );
     };
 };
 
-const mapStateToProps = state => ({
-    clicked: state.clickGift,
-    lists: state.protectedData.data.lists
-});
-
-export default connect(mapStateToProps)(GiftSaveForm);
+export default reduxForm({
+    form: 'saveGift',
+    onSubmitFail: (errors, dispatch) => dispatch(focus('saveGift', 'username'))
+})(GiftSaveForm);

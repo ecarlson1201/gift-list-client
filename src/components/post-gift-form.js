@@ -7,9 +7,8 @@ import { postGift } from '../actions/protected-data';
 
 export class PostGiftForm extends React.Component {
     onSubmit(values) {
-        console.log(values)
         return this.props.dispatch(postGift(values));
-    }
+    };
 
     render() {
         return <div>

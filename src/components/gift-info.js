@@ -17,12 +17,13 @@ export function GiftInfo(props) {
         </p>
         <h3>Suggested Link:</h3>
         <a href={props.clicked.link} rel='noopener noreferrer' target='_blank' >{props.clicked.link}</a>
-        <GiftSaveForm />
+        <GiftSaveForm giftId={props.clicked.id} history={props.history} lists={props.lists.data.lists}/>
     </section>
 }
 
 const mapPropsToState = state => ({
-    clicked: state.clickGift
+    clicked: state.clickGift,
+    lists: state.protectedData
 });
 
 export default connect(mapPropsToState)(GiftInfo);

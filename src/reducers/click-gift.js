@@ -8,7 +8,8 @@ const initialState = {
         description: null,
         link: null,
         image: null,
-        options: []
+        options: [],
+        id: null
 };
 
 export default function reducer(state = initialState, action) {
@@ -22,7 +23,8 @@ export default function reducer(state = initialState, action) {
                     description: action.object.description,
                     link: action.object.link,
                     image: action.object.image,
-                    options: action.array
+                    options: action.array,
+                    id: action.object._id
             });
         default:
             return state
