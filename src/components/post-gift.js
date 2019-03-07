@@ -14,7 +14,7 @@ export class PostGift extends React.Component {
         return <div>
             <NavBar />
             <h1>Post a Gift!</h1>
-            <PostGiftForm />
+            <PostGiftForm history={this.props.history}/>
         </div>
     }
 }

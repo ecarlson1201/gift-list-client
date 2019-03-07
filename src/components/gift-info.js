@@ -15,8 +15,7 @@ export function GiftInfo(props) {
         <h3>Description:</h3>
         <p>{props.clicked.description}
         </p>
-        <h3>Suggested Link:</h3>
-        <a href={props.clicked.link} rel='noopener noreferrer' target='_blank' >{props.clicked.link}</a>
+        <a href={props.clicked.link} rel='noopener noreferrer' target='_blank' >Suggested Link</a>
         <GiftSaveForm giftId={props.clicked.id} history={props.history} lists={props.lists.data.lists}/>
     </section>
 }

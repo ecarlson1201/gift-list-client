@@ -1,13 +1,25 @@
 import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
+import { connect } from 'react-redux';
 
 import Input from './input';
 import { postGift } from '../actions/protected-data';
-
+import { clickGift } from '../actions/click-gift';
 
 export class PostGiftForm extends React.Component {
     onSubmit(values) {
-        return this.props.dispatch(postGift(values));
+        let giftId;
+        const optionsArray = this.props.lists.reduce((acc, val, index) => {
+            acc.push(this.props.lists[index].title)
+            return acc
+        }, []);
+        return this.props.dispatch(postGift(values))
+            .then(gift => {
+                giftId = gift._id
+                this.props.dispatch(clickGift(gift, optionsArray))
+            })
+            .then((res => this.props.history.push(`/giftinfo/${giftId}`)
+            ))
     };
 
     render() {
@@ -75,9 +87,15 @@ export class PostGiftForm extends React.Component {
     }
 }
 
+const mapStateToProps = state => ({
+    lists: state.protectedData.data.lists
+});
+
+const smartPostGiftForm = connect(mapStateToProps)(PostGiftForm);
+
 export default reduxForm({
     form: "postGift",
     onSubmitFail: (errors, dispatch) => {
         dispatch(focus('postGift', Object.keys(errors)[0]));
     }
-})(PostGiftForm);
+})(smartPostGiftForm);
