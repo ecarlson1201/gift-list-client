@@ -1,33 +1,73 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import {Redirect} from "react-router-dom";
-import GiftList from './gift-list';
+import { Redirect } from "react-router-dom";
 import NavBar from './nav-bar';
+import SearchForm from './search-form';
+import { fetchCarouselData } from '../actions/carousel';
+import GiftPreview  from './gift-preview';
 
 export class HomePageBoard extends React.Component {
+    componentDidMount() {
+        let search = {
+            holiday: null,
+            recipient: null
+        };
+        let holidayNum = Math.floor(Math.random() * 7);
+        let recipNum = Math.floor(Math.random() * 8);
+
+        this.props.holidays.forEach((val, index) => {
+            if (index === holidayNum) {
+                search.holiday = this.props.holidays[index];
+            };
+        });
+
+        this.props.recipients.forEach((val, index) => {
+            if (index === recipNum) {
+                search.recipient = this.props.recipients[index];
+            };
+        });
+
+        this.props.dispatch(fetchCarouselData(search))
+    };
+
     render() {
         if (this.props.loggedOut) {
             return <Redirect to="/" />
         };
-        const lists = this.props.carousel.map((list, index) => (
+
+        const holidayList = this.props.carouselOne.gifts.map((list, index) => (
             <li key={index}>
-                <h3>Browse {this.props.carousel[index].title} Gifts</h3>
-                <GiftList index={index} {...list} buttons={false} />
+                <GiftPreview index={index} {...list} buttons={false} />
+            </li>
+        ));
+        const recipientList = this.props.carouselTwo.gifts.map((list, index) => (
+            <li key={index}>
+                <GiftPreview index={index} {...list} buttons={false} />
             </li>
         ));
         return <div>
             <NavBar />
             <h1>Welcome to Gift List!</h1>
+            <h2>Search for Gifts</h2>
+            <SearchForm />
+            <h3>Browse {this.props.carouselOne.search} Gifts</h3>
             <ul>
-                {lists}
+                {holidayList}
+            </ul>
+            <h3>Browse {this.props.carouselTwo.search} Gifts</h3>
+            <ul>
+                {recipientList}
             </ul>
         </div>
     };
 };
 
 const mapStateToProps = state => ({
-    carousel: state.carousel.data,
+    carouselOne: state.carousel.data.holiday,
+    carouselTwo: state.carousel.data.recipient,
+    holidays: state.carousel.holidays,
+    recipients: state.carousel.recipients,
     loggedOut: state.auth.currentUser === null
 });
 

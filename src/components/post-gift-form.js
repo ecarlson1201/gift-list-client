@@ -50,7 +50,7 @@ export class PostGiftForm extends React.Component {
                     <option value="Anniversary">Anniversary</option>
                     <option value="Easter">Easter</option>
                     <option value="Father's/Mother's Day">Father's/Mother's Day</option>
-                    <option value="Spontaneous!">Spontaneous!</option>
+                    <option value="Spontaneous">Spontaneous</option>
                 </Field><br />
                 <label htmlFor="recipient">Suggested Recipient:</label><br />
                 <Field name="recipient" component="select">
@@ -62,6 +62,7 @@ export class PostGiftForm extends React.Component {
                     <option value="Friend">Friend</option>
                     <option value="Grandfather/Grandmother">Grandfather/Grandmother</option>
                     <option value="Pet">Pet</option>
+                    <option value="Son/Daughter">Son/Daughter</option>
                 </Field><br />
                 <label htmlFor="description">Description: </label>
                 <Field

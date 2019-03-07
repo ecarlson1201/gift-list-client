@@ -13,17 +13,18 @@ export const fecthCarouselDataError = error => ({
     error
 });
 
-export const fetchCarouselData = () => (dispatch, getState) => {
-    const authToken = getState().auth.authToken;
-    return fetch(`${API_BASE_URL}/accounts/lists/protected`, {
-        method: "GET",
+export const fetchCarouselData = search => (dispatch) => {
+    return fetch(`${API_BASE_URL}/accounts/carousel`, {
+        method: "POST",
         headers: {
-            Authorization: `Bearer ${authToken}`
-        }
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(search)
     })
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
-        .then(( data ) => dispatch(fetchCarouselDataSuccess(data)))
+        .then(( data ) => {
+            dispatch(fetchCarouselDataSuccess(data))})
         .catch(err => {
             dispatch(fecthCarouselDataError(err));
         });

@@ -6,7 +6,6 @@ import './App.css';
 
 import { refreshAuthToken } from './actions/auth';
 
-import NavBar from './components/nav-bar';
 import HomePageBoard from './components/home-page-board';
 import GiftListBoard from './components/gift-list-board';
 import SearchResultsBoard from './components/search-results-board';
@@ -52,15 +51,6 @@ export class App extends React.Component {
         <Route exact path="/search" component={SearchResultsBoard} />
         <Route exact path="/postgift" component={PostGift} />
         <Route exact path="/giftinfo/:id" component={GiftInfo} />
-
-        {/*<NavBar />
-        <LandingPage />
-        <RegistrationPage />
-        <HomePageBoard />
-        <GiftListBoard />
-        <SearchResultsBoard />
-        <PostGift />
-        <GiftInfo />*/}
       </div>
     );
   };

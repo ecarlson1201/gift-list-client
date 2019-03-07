@@ -20,9 +20,9 @@ export class GiftPreview extends React.Component {
             <Link to={`/giftinfo/${this.props._id}`}>
                 <div id={this.props._id} onClick={() => this.handleClick(this.props)}>
                     <img src={this.props.image} alt="gift-preview" /> <br />
-                    Gift Name: {this.props.name}<br />
-                    Price Range: {this.props.price}<br />
-                    Suggested Holiday: {this.props.holiday} <br />
+                    {this.props.name}<br />
+                    {this.props.price}<br />
+                    {this.props.recipient} <br />
                 </div>
             </Link>
         )
