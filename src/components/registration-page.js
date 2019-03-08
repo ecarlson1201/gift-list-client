@@ -10,7 +10,7 @@ export function RegistrationPage(props) {
     return (
         <div className="home">
             <h2>Create An Account!</h2>
-            <RegistrationForm />
+            <RegistrationForm history={props.history}/>
             <Link to="/">Cancel</Link>
         </div>
     );

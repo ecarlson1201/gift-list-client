@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './nav-bar.css'
 import { clearAuthToken } from '../local-storage';
@@ -19,7 +19,7 @@ export class NavBar extends React.Component {
                 <Link to="/homepage">Home</Link>
                 <Link to="/lists">My Lists</Link>
                 <Link to="/postgift">Post Gift</Link>
-                <button onClick={() => this.logOut()}>Logout</button>
+                <Link to="/" onClick={() => this.logOut()}>Logout</Link>
             </nav>
         )
 

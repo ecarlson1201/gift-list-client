@@ -7,7 +7,6 @@ import GiftPreview from './gift-preview';
 
 export class SearchResultsBoard extends React.Component {
     render() {
-        console.log(this.props.search)
         const searchList = (this.props.search[0].name === "No Results Found") ?
             "No Results Found" :
             this.props.search.map((list, index) => (

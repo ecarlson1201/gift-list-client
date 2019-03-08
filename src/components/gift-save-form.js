@@ -13,6 +13,7 @@ export class GiftSaveForm extends React.Component {
         const options = this.props.lists.map((option, index) => (
             <option key={index} value={this.props.lists[index]._id}>{this.props.lists[index].title}</option>
         ));
+        console.log(this.props.lists)
 
         return (
             <form action="saveGift" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>

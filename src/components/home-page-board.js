@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import NavBar from './nav-bar';
 import SearchForm from './search-form';
 import { fetchCarouselData } from '../actions/carousel';
+import { fetchSearchData, displaySearchParams } from '../actions/protected-data';
 import GiftPreview from './gift-preview';
 
 export class HomePageBoard extends React.Component {
@@ -31,6 +32,16 @@ export class HomePageBoard extends React.Component {
         this.props.dispatch(fetchCarouselData(search))
     };
 
+    handleClickOne(values) {
+        this.props.dispatch(fetchSearchData({ holiday: values }))
+            .then(res => this.props.dispatch(displaySearchParams({holiday: values})))
+    };
+
+    handleClickTwo(values) {
+        this.props.dispatch(fetchSearchData({ recipient: values }))
+            .then(res => this.props.dispatch(displaySearchParams({recipient: values})))
+    };
+
     render() {
         if (this.props.loggedOut) {
             return <Redirect to="/" />
@@ -51,11 +62,19 @@ export class HomePageBoard extends React.Component {
             <h1>Welcome to Gift List!</h1>
             <h2>Search for Gifts</h2>
             <SearchForm history={this.props.history} />
-            <h3>Browse {this.props.carouselOne.search} Gifts</h3>
+            <Link to='/search'>
+                <h3 onClick={() => this.handleClickOne(this.props.carouselOne.search)}>
+                    Browse {this.props.carouselOne.search} Gifts
+                </h3>
+            </Link>
             <ul>
                 {holidayList}
             </ul>
-            <h3>Browse Gifts For Your {this.props.carouselTwo.search}</h3>
+            <Link to='/search'>
+                <h3 onClick={() => this.handleClickTwo(this.props.carouselTwo.search)}>
+                    Browse Gifts For Your {this.props.carouselTwo.search}
+                </h3>
+            </Link>
             <ul>
                 {recipientList}
             </ul>
