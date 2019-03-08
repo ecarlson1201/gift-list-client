@@ -14,6 +14,24 @@ export const fetchProtectedDataError = error => ({
     error
 });
 
+export const FETCH_SEARCH_DATA_SUCCESS = 'FETCH_SEARCH_DATA_SUCCESS';
+export const fetchSearchDataSuccess = data => ({
+    type: FETCH_SEARCH_DATA_SUCCESS,
+    data
+});
+
+export const FETCH_SEARCH_DATA_ERROR = 'FETCH_SEARCH_DATA_ERROR';
+export const fetchSearchDataError = error => ({
+    type: FETCH_SEARCH_DATA_ERROR,
+    error
+});
+
+export const DISPLAY_SEARCH_PARAMS = 'DISPLAY_SEARCH_PARAMS';
+export const displaySearchParams = data => ({
+    type: DISPLAY_SEARCH_PARAMS,
+    data
+});
+
 export const fetchProtectedData = () => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/accounts/lists/protected`, {
@@ -84,7 +102,7 @@ export const deleteGiftList = id => (dispatch, getState) => {
             'content-type': 'application/json',
             'Authorization': `Bearer ${authToken}`
         },
-        body: JSON.stringify({_id: id})
+        body: JSON.stringify({ _id: id })
     })
         .then(res => normalizeResponseErrors(res))
         .then(data => fetchProtectedData(data))
@@ -108,7 +126,7 @@ export const saveGift = (gift, list) => (dispatch, getState) => {
             'content-type': 'application/json',
             'Authorization': `Bearer ${authToken}`
         },
-        body: JSON.stringify({gift: gift, list: list})
+        body: JSON.stringify({ gift: gift, list: list })
     })
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
@@ -132,7 +150,7 @@ export const deleteGift = (gift, list) => (dispatch, getState) => {
             'content-type': 'application/json',
             'Authorization': `Bearer ${authToken}`
         },
-        body: JSON.stringify({gift: gift, list: list})
+        body: JSON.stringify({ gift: gift, list: list })
     })
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
@@ -145,5 +163,21 @@ export const deleteGift = (gift, list) => (dispatch, getState) => {
                     })
                 );
             };
+        });
+};
+
+export const fetchSearchData = search => (dispatch) => {
+    return fetch(`${API_BASE_URL}/accounts/gifts/search`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(search)
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .then((data) => dispatch(fetchSearchDataSuccess(data)))
+        .catch(err => {
+            dispatch(fetchSearchDataError(err));
         });
 };

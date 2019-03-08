@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 import NavBar from './nav-bar';
 import SearchForm from './search-form';
 import { fetchCarouselData } from '../actions/carousel';
-import GiftPreview  from './gift-preview';
+import GiftPreview from './gift-preview';
 
 export class HomePageBoard extends React.Component {
     componentDidMount() {
@@ -50,12 +50,12 @@ export class HomePageBoard extends React.Component {
             <NavBar />
             <h1>Welcome to Gift List!</h1>
             <h2>Search for Gifts</h2>
-            <SearchForm />
+            <SearchForm history={this.props.history} />
             <h3>Browse {this.props.carouselOne.search} Gifts</h3>
             <ul>
                 {holidayList}
             </ul>
-            <h3>Browse {this.props.carouselTwo.search} Gifts</h3>
+            <h3>Browse Gifts For Your {this.props.carouselTwo.search}</h3>
             <ul>
                 {recipientList}
             </ul>
