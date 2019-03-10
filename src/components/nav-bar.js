@@ -16,10 +16,10 @@ export class NavBar extends React.Component {
     render() {
         return (
             <nav>
-                <Link to="/homepage">Home</Link>
-                <Link to="/lists">My Lists</Link>
-                <Link to="/postgift">Post Gift</Link>
-                <Link to="/" onClick={() => this.logOut()}>Logout</Link>
+                |<Link className='transition' to="/homepage">Home</Link>
+                |<Link className='transition' to="/lists">My Lists</Link>
+                |<Link className='transition' to="/postgift">Post Gift</Link>
+                |<Link className='transition' to="/" onClick={() => this.logOut()}>Logout</Link>|
             </nav>
         )
 

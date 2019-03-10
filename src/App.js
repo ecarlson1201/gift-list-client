@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link, withRouter } from 'react-router-dom';
 
 import './App.css';
+import '../src/float-grid.css'
 
 import { refreshAuthToken } from './actions/auth';
 
@@ -43,15 +44,18 @@ export class App extends React.Component {
 
   render() {
     return (
-      <div className="App" >
-        <Route exact path="/" component={LandingPage} />
-        <Route exact path="/register" component={RegistrationPage} />
-        <Route exact path="/homepage" component={HomePageBoard} />
-        <Route exact path="/lists" component={GiftListBoard} />
-        <Route exact path="/search" component={SearchResultsBoard} />
-        <Route exact path="/postgift" component={PostGift} />
-        <Route exact path="/giftinfo/:id" component={GiftInfo} />
+      <div className='row'>
+        <div className="App" >
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/register" component={RegistrationPage} />
+          <Route exact path="/homepage" component={HomePageBoard} />
+          <Route exact path="/lists" component={GiftListBoard} />
+          <Route exact path="/search" component={SearchResultsBoard} />
+          <Route exact path="/postgift" component={PostGift} />
+          <Route exact path="/giftinfo/:id" component={GiftInfo} />
+        </div>
       </div>
+
     );
   };
 };

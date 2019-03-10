@@ -21,7 +21,7 @@ export class AddGiftListForm extends React.Component {
                     placeholder="Name"
                     required
                 ></Field>
-                <input type="submit" value="Add List" />
+                <input className='submit' type="submit" value="Add List" />
             </form>
         );
     };

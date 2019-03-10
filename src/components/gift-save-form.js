@@ -21,7 +21,7 @@ export class GiftSaveForm extends React.Component {
                     <option key='blank' value='' />
                     {options}
                 </Field>
-                <input type="submit" value="Save to List" />
+                <input className='submit' type="submit" value="Save to List" />
             </form>
         );
     };

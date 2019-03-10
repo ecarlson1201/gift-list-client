@@ -144,7 +144,7 @@ export const saveGift = (gift, list) => (dispatch, getState) => {
 
 export const deleteGift = (gift, list) => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
-    return fetch(`${API_BASE_URL}/accounts/gifts/protected`, {
+    return fetch(`${API_BASE_URL}/accounts/lists/protected`, {
         method: 'PUT',
         headers: {
             'content-type': 'application/json',

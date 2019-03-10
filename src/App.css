@@ -1,33 +1,120 @@
 .App {
   text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  background-image: url('./assets/black_background3.png');
+  border-radius: 6px;
+  color: white;
+  padding-bottom: 20px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+body{
+  background-image: url('./assets/background-boxes-celebration-1303081.jpg');
+  background-size: cover;
+  height: 100%;
+  background-attachment: fixed;
+  font-family: 'Quicksand', sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+h1{
+  font-size: 500%;
+  font-family: 'Calligraffitti'
+}
+
+a{
+  color: white;
+  text-decoration: none;
+  font-size: large;
+}
+
+a:hover{
+  color:rgb(212, 154, 154);
+  cursor: pointer;
+}
+
+li{
+  list-style: none;
+  width: 30%; 
+}
+
+ul{
+  padding: 0;
+  text-align: center;
+}
+
+input{
+  font-family: 'Quicksand', sans-serif;
+  font-size: large;
+  height: 30px;
+  width: 150px;
+  border-radius: 2px;
+  margin: 5px;
+}
+
+select{
+  font-family: 'Quicksand', sans-serif;
+  font-size: medium;
+  height: 30px;
+  width: 150px;
+  border-radius: 2px;
+  margin: 5px;
+}
+
+button{
+  font-family: 'Quicksand', sans-serif;
+  font-size: large;
+  height: 30px;
+  width: 150px;
+  border-radius: 2px;
+  margin: 5px;
+}
+
+select:hover{
+  cursor: pointer;
+}
+
+.search{
+  display: inline-block;
+}
+
+.deleteGift{
+  width: auto;
+  font-weight: bold;
+  border-style: none;
+  background-color: transparent;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.deleteGift:hover{
+  color:rgb(212, 154, 154);
+  cursor: pointer;
+  transition-duration: 0.2s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.giftPreview{
+  padding:10px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.giftPreview:hover{
+  background-image: url('./assets/black_background3.png');
+  cursor: pointer;
+  border-radius: 3px;
+  transition-duration: 0.1s;
+}
+
+.transition:hover{
+  transition-duration: 0.2s;
+}
+
+.submit{
+  border: 0;
+  width: auto;
+  background-color: rgb(197, 197, 197);
+}
+
+.submit:hover{
+  cursor: pointer;
+  background-color: white;
+  transition-duration: 0.2s;
 }

@@ -64,12 +64,6 @@ export class PostGiftForm extends React.Component {
                     <option value="Pet">Pet</option>
                     <option value="Son/Daughter">Son/Daughter</option>
                 </Field><br />
-                <label htmlFor="description">Description: </label>
-                <Field
-                    component={Input}
-                    type="text"
-                    name="description"
-                    required />
                 <label htmlFor="link">Suggested Link: </label>
                 <Field
                     component={Input}
@@ -82,7 +76,14 @@ export class PostGiftForm extends React.Component {
                     type="text"
                     name="image"
                     required />
-                <input type="submit" value="Submit Gift" />
+                <label htmlFor="description">Description: </label>
+                <Field
+                    id='description'
+                    component={Input}
+                    type="text"
+                    name="description"
+                    required />
+                <input className='submit' type="submit" value="Submit" />
             </form>
         </div>
     }

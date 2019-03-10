@@ -16,7 +16,7 @@ export class GiftList extends React.Component {
         const gifts = this.props.gifts.map((gift, index) => (
             <li key={index}>
                 <GiftPreview {...gift} />
-                {this.props.buttons ? <button data-id={this.props.gifts[index]._id} onClick={event => this.deleteGift(event)}>Delete</button> : ''}
+                {this.props.buttons ? <button className='deleteGift' data-id={this.props.gifts[index]._id} onClick={event => this.deleteGift(event)}>X</button> : ''}
             </li>
         ));
 

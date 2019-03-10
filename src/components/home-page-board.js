@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import { Link, Redirect } from "react-router-dom";
+
 import NavBar from './nav-bar';
 import SearchForm from './search-form';
 import { fetchCarouselData } from '../actions/carousel';
-import { fetchSearchData, displaySearchParams } from '../actions/protected-data';
+import { fetchSearchData, displaySearchParams, fetchProtectedData } from '../actions/protected-data';
 import GiftPreview from './gift-preview';
 
 export class HomePageBoard extends React.Component {
@@ -30,16 +30,17 @@ export class HomePageBoard extends React.Component {
         });
 
         this.props.dispatch(fetchCarouselData(search))
+            .then(() => this.props.dispatch(fetchProtectedData()))
     };
 
     handleClickOne(values) {
         this.props.dispatch(fetchSearchData({ holiday: values }))
-            .then(res => this.props.dispatch(displaySearchParams({holiday: values})))
+            .then(res => this.props.dispatch(displaySearchParams({ holiday: values })))
     };
 
     handleClickTwo(values) {
         this.props.dispatch(fetchSearchData({ recipient: values }))
-            .then(res => this.props.dispatch(displaySearchParams({recipient: values})))
+            .then(res => this.props.dispatch(displaySearchParams({ recipient: values })))
     };
 
     render() {
@@ -47,12 +48,12 @@ export class HomePageBoard extends React.Component {
             return <Redirect to="/" />
         };
 
-        const holidayList = this.props.carouselOne.gifts.map((list, index) => (
+        const holidayList = this.props.carouselOne.gifts.slice(0, 4).map((list, index) => (
             <li key={index}>
                 <GiftPreview index={index} {...list} buttons={false} />
             </li>
         ));
-        const recipientList = this.props.carouselTwo.gifts.map((list, index) => (
+        const recipientList = this.props.carouselTwo.gifts.slice(0, 4).map((list, index) => (
             <li key={index}>
                 <GiftPreview index={index} {...list} buttons={false} />
             </li>
@@ -62,22 +63,26 @@ export class HomePageBoard extends React.Component {
             <h1>Welcome to Gift List!</h1>
             <h2>Search for Gifts</h2>
             <SearchForm history={this.props.history} />
-            <Link to='/search'>
-                <h3 onClick={() => this.handleClickOne(this.props.carouselOne.search)}>
-                    Browse {this.props.carouselOne.search} Gifts
+            <div>
+                <Link className='transition' to='/search'>
+                    <h3 onClick={() => this.handleClickOne(this.props.carouselOne.search)}>
+                        Browse {this.props.carouselOne.search} Gifts
                 </h3>
-            </Link>
-            <ul>
-                {holidayList}
-            </ul>
-            <Link to='/search'>
-                <h3 onClick={() => this.handleClickTwo(this.props.carouselTwo.search)}>
-                    Browse Gifts For Your {this.props.carouselTwo.search}
-                </h3>
-            </Link>
-            <ul>
-                {recipientList}
-            </ul>
+                </Link>
+                <ul>
+                    {holidayList}
+                </ul>
+            </div>
+            <div>
+                <Link className='transition' to='/search'>
+                    <h3 onClick={() => this.handleClickTwo(this.props.carouselTwo.search)}>
+                        Browse Gifts For Your {this.props.carouselTwo.search}
+                    </h3>
+                </Link>
+                <ul>
+                    {recipientList}
+                </ul>
+            </div>
         </div>
     };
 };

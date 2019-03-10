@@ -20,10 +20,10 @@ export class SearchResultsBoard extends React.Component {
             <NavBar />
             <h1>Gift Idea Search Results</h1>
             <h3>Showing Results For: {searchParams}</h3>
+            <Link to='/homepage'>New Search</Link>
             <ul>
                 {searchList}
             </ul>
-            <Link to='/homepage'>New Search</Link>
         </div>;
     };
 };
