@@ -12,9 +12,8 @@ export function LandingPage(props) {
     return (
         <div>
             <h1>Welcome to Gift List!</h1>
-            <h3>Gift List is an online gift idea database that allows users to search for
-                gift ideas submitted by other users. <br /> Users can save ideas to lists for different
-                people in their lives. </h3>
+            <h3>Gift List is an online gift idea database that allows you to brainstorm gifts for people in your life by searching for
+                gift ideas submitted by other users and saving them to your lists. </h3>
             <h3>Demo Account:</h3>
             <p>Username: user <br />
                 Password: password</p>
