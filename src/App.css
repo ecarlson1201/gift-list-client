@@ -20,6 +20,10 @@ h1{
   font-family: 'Calligraffitti'
 }
 
+form{
+  margin-bottom: 10px;
+}
+
 a{
   color: white;
   text-decoration: none;
@@ -95,8 +99,6 @@ select:hover{
 }
 
 .giftPreview:hover{
-  background-image: url('./assets/black_background3.png');
-  cursor: pointer;
   border-radius: 3px;
   transition-duration: 0.1s;
 }
@@ -132,13 +134,23 @@ margin: 10px;
 }
 
 .giftLi{
-  width: 33%;
+  width: 30%;
   display: inline-block;
+  margin: 5px;
 }
 
+.giftLi:hover{
+  border-radius: 3px;
+  background-image: url('./assets/black_background3.png');
+}
 .carouselLi{
   width:25%;
   display: inline-block;
+}
+
+.carouselLi:hover{
+  background-image: url('./assets/black_background3.png');
+  border-radius: 3px;
 }
 
 h2{
@@ -196,4 +208,13 @@ h3{
 
 .home{
   margin-top: 150px;
+}
+
+@media only screen and (max-width: 600px) {
+  .carouselLi{
+    width: 100%
+  }
+  .giftLi{
+    width: 100%
+  }
 }
