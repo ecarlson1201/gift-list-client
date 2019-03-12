@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
 
 import GiftSaveForm from './gift-save-form';
 import NavBar from './nav-bar';
 
 export function GiftInfo(props) {
-    return <section>
+    return <div className='giftInfo'>
         <NavBar />
+        <GiftSaveForm giftId={props.clicked.id} history={props.history} lists={props.lists.data.lists}/>
         <img src={props.clicked.image} alt="gift" />
         <h3>Gift Name: </h3><span>{props.clicked.name}</span>
         <h3>Price Range: </h3><span>{props.clicked.price}</span>
@@ -15,9 +17,8 @@ export function GiftInfo(props) {
         <h3>Description:</h3>
         <p>{props.clicked.description}
         </p>
-        <a href={props.clicked.link} rel='noopener noreferrer' target='_blank' >Suggested Link</a>
-        <GiftSaveForm giftId={props.clicked.id} history={props.history} lists={props.lists.data.lists}/>
-    </section>
+        <h3>Suggested Link</h3><a className='giftLink' href={props.clicked.link} rel='noopener noreferrer' target='_blank' >{props.clicked.link}</a> <br/>
+    </div>
 }
 
 const mapPropsToState = state => ({

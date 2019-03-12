@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
+import {Link} from 'react-router-dom';
 
 import { saveGift } from '../actions/protected-data';
 
@@ -22,6 +23,7 @@ export class GiftSaveForm extends React.Component {
                     {options}
                 </Field>
                 <input className='submit' type="submit" value="Save to List" />
+                <Link className='linkButton' to='/homepage'>Back</Link>
             </form>
         );
     };

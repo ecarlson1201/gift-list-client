@@ -14,7 +14,7 @@ export class GiftList extends React.Component {
 
     render() {
         const gifts = this.props.gifts.map((gift, index) => (
-            <li key={index}>
+            <li className='giftLi' key={index}>
                 <GiftPreview {...gift} />
                 {this.props.buttons ? <button className='deleteGift' data-id={this.props.gifts[index]._id} onClick={event => this.deleteGift(event)}>X</button> : ''}
             </li>
@@ -22,7 +22,7 @@ export class GiftList extends React.Component {
 
         return (
             <div>
-                <ul>
+                <ul className='giftList' >
                     {gifts}
                 </ul>
             </div>

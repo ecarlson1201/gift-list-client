@@ -49,12 +49,12 @@ export class HomePageBoard extends React.Component {
         };
 
         const holidayList = this.props.carouselOne.gifts.slice(0, 4).map((list, index) => (
-            <li key={index}>
+            <li className='carouselLi' key={index}>
                 <GiftPreview index={index} {...list} buttons={false} />
             </li>
         ));
         const recipientList = this.props.carouselTwo.gifts.slice(0, 4).map((list, index) => (
-            <li key={index}>
+            <li className='carouselLi' key={index}>
                 <GiftPreview index={index} {...list} buttons={false} />
             </li>
         ));

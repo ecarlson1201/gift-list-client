@@ -28,10 +28,10 @@ export class GiftListBoard extends React.Component {
             return <Redirect to="/" />
         };
         const lists = this.props.lists.map((list, index) => (
-            <li key={index}>
-                <h3>{this.props.lists[index].title}'s List</h3>
+            <li className='giftlist' key={index}>
+                <h2>{this.props.lists[index].title}'s List</h2>
+                <button className='deleteList' data-id={this.props.lists[index]._id} onClick={event => this.deleteGiftList(event)}>Delete</button>
                 <GiftList index={index} list={this.props.lists[index]._id} buttons={true} {...list} />
-                <button className='submit' data-id={this.props.lists[index]._id} onClick={event => this.deleteGiftList(event)}>Delete List</button>
             </li>
         ));
 
@@ -42,7 +42,7 @@ export class GiftListBoard extends React.Component {
                 type='list'
                 onAdd={title => this.addGiftList(title)}
             />
-            <ul className='giftLists'>
+            <ul>
                 {lists}
             </ul>
         </div>

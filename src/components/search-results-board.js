@@ -10,7 +10,7 @@ export class SearchResultsBoard extends React.Component {
         const searchList = (this.props.search[0].name === "No Results Found") ?
             "No Results Found" :
             this.props.search.map((list, index) => (
-                <li key={index}>
+                <li className='searchResultGift' key={index}>
                     <GiftPreview index={index} {...list} buttons={false} />
                 </li>
             ));
@@ -20,10 +20,10 @@ export class SearchResultsBoard extends React.Component {
             <NavBar />
             <h1>Gift Idea Search Results</h1>
             <h3>Showing Results For: {searchParams}</h3>
-            <Link to='/homepage'>New Search</Link>
             <ul>
                 {searchList}
             </ul>
+            <Link className='linkButton' to='/homepage'>New Search</Link>
         </div>;
     };
 };
