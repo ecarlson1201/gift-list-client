@@ -210,6 +210,16 @@ h3{
   margin-top: 150px;
 }
 
+#giftInfoHeader{
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+#createAccountHeader{
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
 @media only screen and (max-width: 600px) {
   .carouselLi{
     width: 100%

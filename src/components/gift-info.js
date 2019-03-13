@@ -8,6 +8,7 @@ import NavBar from './nav-bar';
 export function GiftInfo(props) {
     return <div className='giftInfo'>
         <NavBar />
+        <h1 id='giftInfoHeader'>Gift Info</h1>
         <GiftSaveForm giftId={props.clicked.id} history={props.history} lists={props.lists.data.lists}/>
         <img src={props.clicked.image} alt="gift" />
         <h3>Gift Name: </h3><span>{props.clicked.name}</span>

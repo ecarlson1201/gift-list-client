@@ -15,7 +15,7 @@ export class NavBar extends React.Component {
 
     render() {
         return (
-            <nav>
+            <nav role='navigation'>
                 |<Link className='transition' to="/homepage">Home</Link>
                 |<Link className='transition' to="/lists">My Lists</Link>
                 |<Link className='transition' to="/postgift">Post Gift</Link>

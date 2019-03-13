@@ -44,7 +44,7 @@ export class App extends React.Component {
 
   render() {
     return (
-      <div className='row'>
+      <main role='main' className='row'>
         <div className="App" >
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/register" component={RegistrationPage} />
@@ -54,7 +54,7 @@ export class App extends React.Component {
           <Route exact path="/postgift" component={PostGift} />
           <Route exact path="/giftinfo/:id" component={GiftInfo} />
         </div>
-      </div>
+      </main>
 
     );
   };

@@ -1,13 +1,13 @@
 import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { saveGift } from '../actions/protected-data';
 
 export class GiftSaveForm extends React.Component {
     onSubmit(values) {
         return this.props.dispatch(saveGift(this.props.giftId, values.list))
-            .then(res => this.props.history.push('/lists'))  
+            .then(res => this.props.history.push('/lists'))
     };
 
     render() {
@@ -17,12 +17,15 @@ export class GiftSaveForm extends React.Component {
         console.log(this.props.lists)
 
         return (
-            <form action="saveGift" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-                <Field name="list" component="select">
-                    <option key='blank' value='' />
-                    {options}
-                </Field>
-                <input className='submit' type="submit" value="Save to List" />
+            <form role='search' action="saveGift" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+                <label htmlFor="list"><h2>Save to List</h2><br />
+                    <Field name="list" component="select">
+                        <option key='blank' value='' />
+                        {options}
+                    </Field>
+                </label>
+
+                <input className='submit' type="submit" value="Save" />
                 <Link className='linkButton' to='/homepage'>Back</Link>
             </form>
         );

@@ -1,6 +1,6 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import RegistrationForm from './registration-form';
 
@@ -9,8 +9,8 @@ export function RegistrationPage(props) {
     }
     return (
         <div className="home">
-            <h2>Create An Account!</h2>
-            <RegistrationForm history={props.history}/>
+            <h1 id='createAccountHeader'>Create An Account!</h1>
+            <RegistrationForm history={props.history} />
             <Link to="/">Cancel</Link>
         </div>
     );
