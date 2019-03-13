@@ -8,7 +8,7 @@ export const fetchCarouselDataSuccess = data => ({
 });
 
 export const FETCH_CAROUSEL_DATA_ERROR = 'FETCH_CAROUSEL_DATA_ERROR';
-export const fecthCarouselDataError = error => ({
+export const fetchCarouselDataError = error => ({
     type: FETCH_CAROUSEL_DATA_ERROR,
     error
 });
@@ -26,6 +26,6 @@ export const fetchCarouselData = search => (dispatch) => {
         .then(( data ) => {
             dispatch(fetchCarouselDataSuccess(data))})
         .catch(err => {
-            dispatch(fecthCarouselDataError(err));
+            dispatch(fetchCarouselDataError(err));
         });
 };
