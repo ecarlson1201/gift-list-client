@@ -4,7 +4,7 @@ import {
     FETCH_SEARCH_DATA_ERROR,
     FETCH_SEARCH_DATA_SUCCESS,
     DISPLAY_SEARCH_PARAMS
-} from '../actions/protected-data'
+} from '../actions/protected-data';
 
 const initialState = {
     data: {

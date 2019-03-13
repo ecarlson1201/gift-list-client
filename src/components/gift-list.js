@@ -9,7 +9,7 @@ export class GiftList extends React.Component {
         let giftId = event.currentTarget.getAttribute('data-id')
         let listId = this.props.list
         return this.props.dispatch(deleteGift(giftId, listId))
-        .then(() => { this.props.dispatch(fetchProtectedData()) });
+            .then(() => { this.props.dispatch(fetchProtectedData()) });
     };
 
     render() {

@@ -27,6 +27,6 @@ export default function reducer(state = initialState, action) {
                     id: action.object._id
             });
         default:
-            return state
+            return state;
     };
 };

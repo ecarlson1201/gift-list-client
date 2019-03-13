@@ -19,7 +19,7 @@ export class PostGiftForm extends React.Component {
                 this.props.dispatch(clickGift(gift, optionsArray))
             })
             .then((res => this.props.history.push(`/giftinfo/${giftId}`)
-            ))
+            ));
     };
 
     render() {
@@ -89,8 +89,8 @@ export class PostGiftForm extends React.Component {
                 <input className='submit' type="submit" value="Submit" />
             </form>
         </div>
-    }
-}
+    };
+};
 
 const mapStateToProps = state => ({
     lists: state.protectedData.data.lists

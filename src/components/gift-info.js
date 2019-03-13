@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
 
 import GiftSaveForm from './gift-save-form';
 import NavBar from './nav-bar';
@@ -20,7 +19,7 @@ export function GiftInfo(props) {
         </p>
         <h3>Suggested Link</h3><a className='giftLink' href={props.clicked.link} rel='noopener noreferrer' target='_blank' >{props.clicked.link}</a> <br/>
     </div>
-}
+};
 
 const mapPropsToState = state => ({
     clicked: state.clickGift,

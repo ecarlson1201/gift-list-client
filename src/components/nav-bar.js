@@ -21,9 +21,9 @@ export class NavBar extends React.Component {
                 |<Link className='transition' to="/postgift">Post Gift</Link>
                 |<Link className='transition' to="/" onClick={() => this.logOut()}>Logout</Link>|
             </nav>
-        )
+        );
 
-    }
+    };
 };
 
 const mapStateToProps = state => ({

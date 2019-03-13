@@ -4,11 +4,11 @@ export const normalizeResponseErrors = res => {
             res.headers.get('content-type').startsWith('application/json')
         ) {
             return res.json().then(err => Promise.reject(err));
-        }
+        };
         return Promise.reject({
             code: res.status,
             message: res.statusText
         });
-    }
+    };
     return res;
 };

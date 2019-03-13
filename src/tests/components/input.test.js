@@ -5,6 +5,6 @@ import Input from '../../components/input';
 
 describe('<Input />', () => {
     it('Renders without crashing', () => {
-        shallow(<Input meta={{touched: false}} input={{name: 'Dad'}}/>);
+        shallow(<Input meta={{ touched: false }} input={{ name: 'Dad' }} />);
     });
 });

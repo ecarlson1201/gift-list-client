@@ -14,7 +14,7 @@ export function RegistrationPage(props) {
             <Link to="/">Cancel</Link>
         </div>
     );
-}
+};
 
 const mapStateToProps = state => ({
     loggedIn: state.auth.currentUser !== null

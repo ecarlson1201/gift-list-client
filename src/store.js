@@ -24,7 +24,7 @@ if (authToken) {
     const token = authToken;
     store.dispatch(setAuthToken(token));
     store.dispatch(refreshAuthToken());
-}
+};
 
 
 export default store;

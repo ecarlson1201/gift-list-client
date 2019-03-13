@@ -6,7 +6,7 @@ import { addGiftList } from '../actions/protected-data';
 export class AddGiftListForm extends React.Component {
     onSubmit(values) {
         return this.props.dispatch(addGiftList(values)).then(() => { this.props.reset() })
-    }
+    };
 
     render() {
         return (

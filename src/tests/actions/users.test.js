@@ -15,7 +15,7 @@ describe('fetchBoard', () => {
                     return board
                 }
             })
-        )
+        );
 
         const dispatch = jest.fn()
         return registerUser()(dispatch).then(() => {
@@ -23,7 +23,7 @@ describe('fetchBoard', () => {
                 'body': undefined,
                 'headers': { 'content-type': 'application/json' },
                 'method': 'POST'
-            })
-        })
-    })
-})
+            });
+        });
+    });
+});

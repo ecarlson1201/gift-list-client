@@ -36,7 +36,6 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-
     switch (action.type) {
         case FETCH_CAROUSEL_DATA_SUCCESS:
             return Object.assign({}, state, {
@@ -48,6 +47,6 @@ export default function reducer(state = initialState, action) {
                 error: action.error
             })
         default:
-            return state
-    }
+            return state;
+    };
 };
