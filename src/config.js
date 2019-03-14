@@ -3,5 +3,5 @@ module.exports = {
 
     API_BASE_URL: process.env.REACT_APP_API_BASE_URL ||
      //"http://localhost:8080/api"
-     "https://aqueous-fjord-79781.herokuapp.com/"
+     "https://aqueous-fjord-79781.herokuapp.com"
   };
