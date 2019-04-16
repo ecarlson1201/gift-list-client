@@ -8,7 +8,7 @@
 }
 
 body{
-  background-image: url('./assets/background-boxes-celebration-1303081.jpg');
+  background-image: url('./assets/compressed-background.jpg');
   background-size: cover;
   height: 100%;
   background-attachment: fixed;
@@ -227,4 +227,9 @@ h3{
   .giftLi{
     width: 100%
   }
+}
+
+.form-error{
+  color: red;
+  font-weight: bold;
 }

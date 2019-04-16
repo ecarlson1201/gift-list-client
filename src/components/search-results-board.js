@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import SearchForm from './search-form';
 import NavBar from './nav-bar';
 import GiftPreview from './gift-preview';
 
@@ -19,6 +20,7 @@ export class SearchResultsBoard extends React.Component {
         return <div>
             <NavBar />
             <h1>Gift Idea Search Results</h1>
+            <SearchForm/>
             <h3>Showing Results For: {searchParams}</h3>
             <ul>
                 {searchList}

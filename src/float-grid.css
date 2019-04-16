@@ -37,4 +37,8 @@
     .col-3{
         width: 25%
     }
+
+    .row{
+        max-width: 1400px;
+    }
 }
